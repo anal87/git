@@ -1,0 +1,53 @@
+# .github/dependabot.yml
+
+version: 2
+updates:
+  # 1. For npm/Node.js dependencies (if you have package.json)
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "America/New_York"
+    open-pull-requests-limit: 10
+    versioning-strategy: "increase"
+    labels:
+      - "dependencies"
+      - "npm"
+    commit-message:
+      prefix: "npm"
+      prefix-development: "npm-dev"
+    
+  # 2. For GitHub Actions workflows
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "tuesday"
+      time: "09:00"
+    open-pull-requests-limit: 5
+    labels:
+      - "dependencies"
+      - "github-actions"
+      
+  # 3. For Docker (if you have Dockerfile)
+  - package-ecosystem: "docker"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "wednesday"
+      time: "09:00"
+    labels:
+      - "dependencies"
+      - "docker"
+      
+  # 4. For Python (if you have requirements.txt or pyproject.toml)
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+      day: "first monday"
+    labels:
+      - "dependencies"
+      - "python"
