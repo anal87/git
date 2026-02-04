@@ -1,0 +1,9 @@
+# .github/ISSUE_TEMPLATE/config.yml
+blank_issues_enabled: false  # Disable blank issues, force template use
+contact_links:
+  - name: GitHub Discussions
+    url: https://github.com/anal87/intel-website/discussions
+    about: Please ask questions here
+  - name: Email Support
+    url: mailto:samarhussainsyed@hotmail.com
+    about: Contact directly for urgent issues
