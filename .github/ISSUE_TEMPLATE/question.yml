@@ -1,0 +1,18 @@
+# .github/ISSUE_TEMPLATE/question.yml
+---
+name: Question
+description: Ask a question about the project
+title: "[QUESTION]: "
+labels: ["question"]
+assignees: "anal87"
+
+---
+
+**What is your question?**
+A clear and concise question about the project.
+
+**What have you tried so far?**
+Describe what you've already tried to find an answer.
+
+**Relevant context**
+Add any other context or screenshots about your question here.
