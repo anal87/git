@@ -36,9 +36,12 @@ jobs:
 
       - name: Add summary to workflow run
         if: always()
-        run: |
-          echo "### HTML Validation Report" >> $GITHUB_STEP_SUMMARY
-          if [ -f proof-html-report.txt ]; then
-            head -n 50 proof-html-report.txt >> $GITHUB_STEP_SUMMARY
-          else
+       run: |
+  echo "### HTML Validation Report" >> $GITHUB_STEP_SUMMARY
+  if [ -f proof-html-report.txt ]; then
+    head -n 50 proof-html-report.txt >> $GITHUB_STEP_SUMMARY
+  else
+    echo "No report generated." >> $GITHUB_STEP_SUMMARY
+  fi
+
             echo "No report generated." >> $GITHUB_STEP_SUMMARY
