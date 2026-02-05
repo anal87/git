@@ -1,4 +1,3 @@
-# .github/workflows/proof-html.yml
 name: Proof HTML
 
 on:
@@ -6,25 +5,40 @@ on:
     branches: [ main ]
   pull_request:
     branches: [ main ]
-  workflow_dispatch:  # Manual trigger
+  workflow_dispatch:
 
 jobs:
   validate-html:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-        
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
       - name: Validate HTML
         uses: anishathalye/proof-html@v1.1.0
         with:
           directory: ./
           fail-on-error: true
-          
+
       - name: Upload validation report
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: html-validation-report
+          name: html-validation-report-${{ github.run_id }}
           path: proof-html-report.txt
+
+      - name: Add summary to workflow run
+        if: always()
+        run: |
+          echo "### HTML Validation Report" >> $GITHUB_STEP_SUMMARY
+          if [ -f proof-html-report.txt ]; then
+            head -n 50 proof-html-report.txt >> $GITHUB_STEP_SUMMARY
+          else
+            echo "No report generated." >> $GITHUB_STEP_SUMMARY
